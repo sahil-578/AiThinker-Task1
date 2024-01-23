@@ -716,14 +716,6 @@ iframe {
   transform-style: preserve-3d;
 }
 
-.btn-warning,
-.btn-warning:active {
-  background-color: #dedb7b !important;
-  border-color: #dedb7b !important;
-  color: #272727 !important;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
-}
-
 .btn {
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
@@ -745,6 +737,24 @@ iframe {
   justify-content: center;
   word-break: break-word;
 }
+
+.btn-warning,
+.btn-warning:active {
+    background-color: #dedb7b !important;
+    border-color: #dedb7b !important;
+    color: #272727 !important;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning.focus,
+.btn-warning.active {
+    color: #f8f1ec !important;
+    background-color: #272727 !important;
+    border-color: #dedb7b !important;
+}
+
 
 /* network */
 
