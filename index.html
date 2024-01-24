@@ -12,13 +12,17 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap&display=swap">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- css -->
   <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-  
+
   <section class="menu-sec m-sec" once="menu" id="menu">
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
       <div class="container">
@@ -502,34 +506,20 @@
 
   <section class="video-sec" id="video">
     <div class="align-center container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-11 col-lg-11 col-video">
-                <div class="box">
-                    <div class="video-media show-modal align-center" data-modal=".modalWindow">
-                        <img src="./images/pexels-lukas-317356.jpg" alt="video-img">
-                        <div class="icon-wrap">
-                            <span class="iconfont" style="color: rgb(39, 39, 39); font-size: 32px; fill: rgb(39, 39, 39);"></span>
-                        </div>
-                    </div>
-                </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-11 col-lg-11 col-video">
+          <div class="box">
+            <div class="video-media show-modal align-center" data-modal=".modalWindow">
+              <img src="./images/pexels-lukas-317356.jpg" alt="video-img">
+              <div class="icon-wrap">
+                <i class="fa-solid fa-circle-play" style="color: #dedb7b;"></i>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div>
-        <div class="modalWindow" style="display: none;">
-            <div class="modalWindow-container">
-                <div class="modalWindow-video-container">
-                    <div class="modalWindow-video">
-                        <iframe width="100%" height="100%" frameborder="0" allowfullscreen="1" data-src="https://www.youtube.com/"></iframe>
-                    </div>
-                    <a class="close" role="button" data-dismiss="modal" data-bs-dismiss="modal">
-                    <span aria-hidden="true" class="iconfont closeModal"></span>
-                </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  </section>
 
 
   <!-- form -->
