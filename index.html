@@ -25,12 +25,12 @@
 
   <!-- Menu & Header -->
 
-  <section class="menu-sec m-sec" once="menu" id="menu">
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+  <section class="menu-sec m-sec transparent" once="menu" id="menu">
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg" id="navbar">
       <div class="container">
         <div class="navbar-brand">
           <span class="navbar-caption-wrap">
-            <a class="navbar-caption text-black display-4" href="">
+            <a class="navbar-caption text-black display-4" href="index.html">
               Logo
             </a></span>
         </div>
@@ -47,27 +47,27 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
             <li class="nav-item">
-              <a class="nav-link link text-black display-7 underline" href="">
+              <a class="nav-link link text-black display-7 underline" href="#about">
                 About
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link text-black display-7 underline" href="">
+              <a class="nav-link link text-black display-7 underline" href="#work">
                 Work
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link text-black display-7 underline" href="">
+              <a class="nav-link link text-black display-7 underline" href="#blog">
                 Blog
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link text-black display-7 underline" href="">
+              <a class="nav-link link text-black display-7 underline" href="#form">
                 Contact
               </a>
             </li>
           </ul>
-          <div class="navbar-buttons section-btn"><a class="btn btn-warning display-7" href="">
+          <div class="navbar-buttons section-btn"><a class="btn btn-warning display-7" href="#team">
               We're hiring</a></div>
         </div>
       </div>
@@ -514,7 +514,7 @@
             <div class="video-media show-modal align-center" data-modal=".modalWindow">
               <img src="./images/pexels-lukas-317356.jpg" alt="video-img">
               <div class="icon-wrap">
-                <i class="fa-solid fa-circle-play fa-4x" style="color: #dedb7b;"></i>
+                <a href=""><i class="fa-solid fa-circle-play fa-4x" style="color: #dedb7b;"></i></a>
               </div>
             </div>
           </div>
@@ -587,7 +587,30 @@
     </div>
   </section>
 
+  <!-- JS Bootstrap CDN Link -->
   <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- nav on scroll -->
+  <script>
+    window.onscroll = function () {
+      // console.log("Scrolling!");
+      var navbar = document.getElementById("navbar");
+      // console.log(navbar);
+      var menuSection = document.querySelector(".menu-sec");
+      console.log(menuSection);
+      if (window.pageYOffset > 0) {
+        navbar.classList.add("scrolled");
+        // console.log("navbar scroll");
+        menuSection.classList.add("scrolled-bg");
+        // console.log("menu scroll");
+      } else {
+        navbar.classList.remove("scrolled");
+        // console.log("remove");
+        menuSection.classList.remove("scrolled-bg");
+      }
+    };
+  </script>
+
 </body>
 
 </html>
