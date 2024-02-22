@@ -608,14 +608,19 @@
   <!-- nav on scroll -->
   <script>
     window.onscroll = function () {
+      // console.log("Scrolling!");
       var navbar = document.getElementById("navbar");
+      // console.log(navbar);
       var menuSection = document.querySelector(".menu-sec");
       console.log(menuSection);
       if (window.pageYOffset > 0) {
         navbar.classList.add("scrolled");
+        // console.log("navbar scroll");
         menuSection.classList.add("scrolled-bg");
+        // console.log("menu scroll");
       } else {
         navbar.classList.remove("scrolled");
+        // console.log("remove");
         menuSection.classList.remove("scrolled-bg");
       }
     };
@@ -626,19 +631,26 @@
       modal1 = new bootstrap.Modal(document.getElementById('modal1'));
     }
 
+    // Get the play button element
     var playButton = document.getElementById('play-video');
-
+    // Get the modal window element
     var modalWindow = document.querySelector('.modalWindow');
-
+    // Get the close icon button element
     var closeButton = modalWindow.querySelector('.close');
 
+    // Add event listener for the play button
     playButton.addEventListener('click', function (event) {
+      // Prevent default link behavior
       event.preventDefault();
+      // Show the modal window
       modalWindow.style.display = 'block';
     });
 
+    // Add event listener for the close icon button
     closeButton.addEventListener('click', function (event) {
+      // Prevent default link behavior
       event.preventDefault();
+      // Hide the modal window
       modalWindow.style.display = 'none';
     });
 

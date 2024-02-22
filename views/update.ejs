@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update User</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        width: 350px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-left: -10px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Update User</h1>
+      <form action="/update/<%= user.id %>" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= user.name %>" />
+        <br />
+        <label for="message">Message:</label>
+        <input
+          type="text"
+          id="message"
+          name="message"
+          value="<%= user.message %>"
+        />
+        <br />
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" value="<%= user.phone %>" />
+        <br />
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="<%= user.email %>" />
+        <br />
+        <button type="submit">Update User</button>
+      </form>
+    </div>
+  </body>
+</html>
