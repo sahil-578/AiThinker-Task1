@@ -28,6 +28,20 @@ app.get("/", (req, res) => {
 
 
 
+// fetching user data in viewdata
+app.get("/viewdata", (req, res) => {
+    let sql = "SELECT * FROM users";
+    mySqlConnection.query(sql, (err, result) => {
+        if (err) {
+            console.error("Error fetching user data:", err);
+            res.status(500).send("Error fetching user data");
+        } else {
+            res.render("viewdata", { users: result });
+        }
+    });
+});
+
+
 
 app.post("/submit", (req, res) => {
     const { name, message, phone, email } = req.body;
@@ -46,10 +60,27 @@ app.post("/submit", (req, res) => {
 });
 
 
+
+app.get("/update", (req, res) => {
+    const userId = req.query.id;
+    const sql = "SELECT * FROM users WHERE id = ?";
+    
+    mySqlConnection.query(sql, [userId], (err, result) => {
+        if (err) {
+            console.error("Error fetching user:", err);
+            res.status(500).send("Error fetching user");
+            return;
+        }
+        res.render("update", { user: result[0] });
+    });
+});
+
+
+
 // update user info
 
-app.put("/update/:id", (req, res) => {
-    const { id } = req.params;
+app.post("/update/:id", (req, res) => {
+    const userId = req.params.id;
     const { name, message, phone, email } = req.body;
 
     const sql =
@@ -57,11 +88,19 @@ app.put("/update/:id", (req, res) => {
 
     mySqlConnection.query(
         sql,
-        [name, message, phone, email, id],
+        [name, message, phone, email, userId],
         (err, result) => {
-            if (err) throw err;
+            if (err) {
+                // throw err;
+                console.error("Error updating record:", err);
+                res.status(500).send("Error updating record");
+            }
+            else{
+                console.log("Record updated successfully");
+                res.redirect('/viewdata');
+            }
             // res.json({msg : "Updated the record successfully"});
-            res.redirect('/');
+            // res.redirect('/');
         }
     );
 });
@@ -69,19 +108,28 @@ app.put("/update/:id", (req, res) => {
 
 // delete a user by their ID
 
-app.delete("/delete/:id", (req, res) => {
-    const { id } = req.params;
+app.post("/delete/:id", (req, res) => {
+    const userId = req.params.id;
 
     const sql = "DELETE FROM users WHERE id = ?";
 
-    mySqlConnection.query(sql, [id], (err, result) => {
-        if (err) throw err;
+    mySqlConnection.query(sql, [userId], (err, result) => {
+        if (err) {
+            // throw err;
+            console.error("Error deleting record:", err);
+            res.status(500).send("Error deleting record");
+        }
+        else{
+            // console.log("Record deleted successfully");
+            // Redirect back to the viewdata page after deleting the record
+            res.redirect("/viewdata");
+        }
         // res.json({msg : "Deleted record successfully"});
-        res.redirect("/");
+        // res.redirect("/");
     });
 });
 
 
-app.listen(8000, () => {
+app.listen(3000, () => {
     console.log("Express Server is running on port 3000");
 });
