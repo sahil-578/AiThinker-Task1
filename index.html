@@ -320,7 +320,7 @@
             mauris rhoncus.
           </p>
           <div class="image-wrapper">
-            <img src="./images/pexels-karolina-grabowska-5625042.jpg" alt="pricing-img">
+            <img src="./images/pricing.png" alt="pricing-img">
           </div>
         </div>
       </div>
@@ -512,11 +512,28 @@
         <div class="col-12 col-md-11 col-lg-11 col-video">
           <div class="box">
             <div class="video-media show-modal align-center" data-modal=".modalWindow">
-              <img src="./images/pexels-lukas-317356.jpg" alt="video-img">
+              <img src="./images/pexels-olya-kobruseva-7598019.jpg" alt="video-img">
               <div class="icon-wrap">
-                <a href=""><i class="fa-solid fa-circle-play fa-4x" style="color: #dedb7b;"></i></a>
+                <div class="play-btn" id="play-video">
+                  <div class="play"></div>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="modalWindow" id="modal1" style="display: none;">
+        <div class="modalWindow-container">
+          <div class="modalWindow-video-container">
+            <div class="modalWindow-video">
+              <div class="video-wrapper">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VA8PzkQa8d8" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+            <button class="close" type="button" data-dismiss="modal" data-bs-dismiss="modal"></button>
           </div>
         </div>
       </div>
@@ -609,6 +626,36 @@
         menuSection.classList.remove("scrolled-bg");
       }
     };
+
+    if (bootstrap == undefined) {
+      document.getElementById("browser-not-supported-container").classList.remove("d-none");
+    } else {
+      modal1 = new bootstrap.Modal(document.getElementById('modal1'));
+    }
+
+    // Get the play button element
+    var playButton = document.getElementById('play-video');
+    // Get the modal window element
+    var modalWindow = document.querySelector('.modalWindow');
+    // Get the close icon button element
+    var closeButton = modalWindow.querySelector('.close');
+
+    // Add event listener for the play button
+    playButton.addEventListener('click', function (event) {
+      // Prevent default link behavior
+      event.preventDefault();
+      // Show the modal window
+      modalWindow.style.display = 'block';
+    });
+
+    // Add event listener for the close icon button
+    closeButton.addEventListener('click', function (event) {
+      // Prevent default link behavior
+      event.preventDefault();
+      // Hide the modal window
+      modalWindow.style.display = 'none';
+    });
+
   </script>
 
 </body>
