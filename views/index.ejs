@@ -551,7 +551,7 @@
         <div class="col-form">
           <div class="form-wrap">
             <div class="form-form" data-form-type="formoid">
-              <form action="/submit"  method="POST" class="form-form form-with-styler mx-auto" data-form-title="Form Name">
+              <form action="/submit"  method="POST" class="form-form form-with-styler mx-auto" data-form-title="Form Name" id="my-form">
                 <!-- <input type="hidden" name="email" data-form-email="true" value=""> -->
                 <div class="row">
                   <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the
@@ -561,19 +561,19 @@
                 </div>
                 <div class="dragArea row">
                   <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="name">
-                    <input type="text" name="name" placeholder="Name" data-form-field="name" required="required"
+                    <input type="text" name="name" placeholder="Name" data-form-field="name" required maxlength="50"
                       class="form-control display-2 display-7" value="" id="form-name">
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 form-group " data-for="message">
-                    <input type="text" name="message" placeholder="Message" data-form-field="message"
+                    <input type="text" name="message" placeholder="Message" data-form-field="message" maxlength="200"
                       class="form-control display-2 display-7" value="" id="form-message">
                   </div>
                   <div data-for="phone" class="col-lg-12 col-md-12 col-sm-12 form-group">
                     <input type="text" name="phone" placeholder="Phone" data-form-field="phone"
-                      class="form-control display-7" value="" id="form-phone">
+                      class="form-control display-7" value="" id="form-phone" required>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="email">
-                    <input type="email" name="email" placeholder="Email" data-form-field="email" required="required"
+                    <input type="email" name="email" placeholder="Email" data-form-field="email" required
                       class="form-control display-2 display-7" value="" id="form-email">
                   </div>
                   <div class="col-auto align-center section-btn">
@@ -652,6 +652,46 @@
       event.preventDefault();
       // Hide the modal window
       modalWindow.style.display = 'none';
+    });
+
+
+    // form validation
+
+    document.getElementById("my-form").addEventListener("submit", function(event) {
+        const nameInput = document.getElementById("form-name");
+        const messageInput = document.getElementById("form-message");
+        const phoneInput = document.getElementById("form-phone");
+        const emailInput = document.getElementById("form-email");
+
+        // Name validation
+        if (nameInput.value.trim().length === 0 || nameInput.value.trim().split(/\s+/).length > 3 || nameInput.value.trim().length > 50) {
+            event.preventDefault();
+            alert("Please enter a valid name (max 50 characters, max 3 words).");
+            return;
+        }
+
+        // Message validation
+        if (messageInput.value.trim().length > 200) {
+            event.preventDefault();
+            alert("Message should not exceed 200 characters.");
+            return;
+        }
+
+        // Phone validation
+        const phoneVal = /^\+91\d{10}$/;
+        if (!phoneVal.test(phoneInput.value.trim())) {
+            event.preventDefault();
+            alert("Please enter a valid phone number starting with +91 and containing 10 digits.");
+            return;
+        }
+
+        // Email validation
+        const emailVal = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailVal.test(emailInput.value.trim())) {
+            event.preventDefault();
+            alert("Please enter a valid email address.");
+            return;
+        }
     });
 
   </script>
