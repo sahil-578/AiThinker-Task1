@@ -56,17 +56,17 @@
         </tr>
       </thead>
       <tbody>
-        <%users.forEach(user => { %>
+        <% for(var i = 0; i < users.length; i++) { %>
         <tr>
-          <td><%= user.id %></td>
-          <td><%= user.name%></td>
-          <td><%= user.message %></td>
-          <td><%= user.phone %></td>
-          <td><%= user.email %></td>
-          <td><a href="/update?id=<%= user.id %>">Edit</a></td>
+          <td><%= i + 1 %></td>
+          <td><%= users[i].name%></td>
+          <td><%= users[i].message %></td>
+          <td><%= users[i].phone %></td>
+          <td><%= users[i].email %></td>
+          <td><a href="/update?id=<%= users[i]._id %>">Edit</a></td>
           <td>
             <form
-              action="/delete/<%= user.id %>"
+              action="/delete/<%= users[i]._id %>"
               method="POST"
               style="display: inline"
             >
@@ -74,7 +74,7 @@
             </form>
           </td>
         </tr>
-        <% }); %>
+        <% }; %>
       </tbody>
     </table>
     <a href="/">Back To Home</a>
